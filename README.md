@@ -15,9 +15,9 @@ This guide provides detailed instructions on setting up Prometheus and Grafana t
 
 2. **Set Up Security Groups**
    - Configure security groups to allow inbound traffic:
-     - Prometheus: TCP port 9090
-     - Grafana: TCP port 3000
-     - Node Exporter: TCP port 9100
+     - Prometheus: TCP port 9090 (Local/Monitoring Server)
+     - Grafana: TCP port 3000 (Local/Monitoring Server)
+     - Node Exporter: TCP port 9100 (Ec2 Instance You want to Monitor)
 
 3. **Install Required Software on EC2 Instances**
    - **Node Exporter**: Monitoring agent for collecting system metrics.
@@ -118,6 +118,7 @@ This guide provides detailed instructions on setting up Prometheus and Grafana t
      - Choose Graph.
      - Add queries for CPU, Memory, Disk Usage, and Instance Count.
 
+
    - **Individual Graphs (Detailed Metrics)**
      - Create separate panels for:
        - CPU Utilization: `avg(rate(node_cpu_seconds_total{mode!="idle"}[1m])) by (instance)`
@@ -125,6 +126,8 @@ This guide provides detailed instructions on setting up Prometheus and Grafana t
        - Disk Usage: `node_filesystem_avail_bytes{fstype!="tmpfs"} / node_filesystem_size_bytes{fstype!="tmpfs"} * 100`
        - Number of Instances: `count(up{job="node_exporter"})`
 
+![Grafana Dashboard](images/grafana_graph.png)
+![Summary Graph](images/summary_graph.png)
 ## Troubleshooting
 
 - **Check Prometheus Targets**
