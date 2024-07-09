@@ -126,7 +126,7 @@ This guide provides detailed instructions on setting up Prometheus and Grafana t
        - Disk Usage: `node_filesystem_avail_bytes{fstype!="tmpfs"} / node_filesystem_size_bytes{fstype!="tmpfs"} * 100`
        - Number of Instances: `count(up{job="node_exporter"})`
 
-![Grafana Dashboard](images/grafana_graph.png)
+![Grafana Dashboard](images/grafana_dash.png)
 ![Summary Graph](images/summary_graph.png)
 ## Troubleshooting
 
